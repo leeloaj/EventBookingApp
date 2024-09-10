@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Services.Dtos;
 using Services.Interfaces;
 
@@ -21,6 +22,7 @@ public class EventsController(IEventsService eventsService) : Controller
     [HttpPost("create")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [Authorize]
     public async Task<IActionResult> Create(CreateEventDto eventDto)
     {
         await eventsService.CreateEvent(eventDto);

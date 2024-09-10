@@ -29,19 +29,19 @@ public class EventsService(DataContext context) : IEventsService
         
         if (dbEvent == null)
         {
-            throw new ArgumentException("Event doesn't exist!");
+            throw new ArgumentException("Üritust ei leitud!");
         }
         
         var hasRegistration = dbEvent.Registrations.Any(e => e.IdCode == createRegisterDto.IdCode);
         if (hasRegistration)
         {
-            throw new ArgumentException("You already have registered to this event!");
+            throw new ArgumentException("Oled juba registreerunud sellele üritusele!");
         }
 
         var isFull = dbEvent.MaxParticipants == dbEvent.Registrations.Count;
         if (isFull)
         {
-            throw new ArgumentException("Event is full!");
+            throw new ArgumentException("Üritus on täis broneeritud!");
         }
         
         var eventRegistration = new EventRegistration
