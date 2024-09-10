@@ -10,10 +10,22 @@ using WebApi.Settings;
 
 namespace Services;
 
+/// <summary>
+/// Service for log in
+/// </summary>
+/// <param name="adminUserSettings"></param>
+/// <param name="jwtSettings"></param>
 public class UsersService(
+    
     IOptions<AdminUser> adminUserSettings,
     IOptions<JwtSettings> jwtSettings) : IUsersService
 {
+    /// <summary>
+    /// Log in for admin
+    /// </summary>
+    /// <param name="loginRequest"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
     public LoginResponse AdminLogin(LoginRequest loginRequest)
     {
         if (loginRequest.Email != adminUserSettings.Value.Email ||
@@ -29,6 +41,11 @@ public class UsersService(
         };
     }
     
+    /// <summary>
+    /// Generating token for admin user to log in
+    /// </summary>
+    /// <param name="email"></param>
+    /// <returns>token</returns>
     private string GenerateJwtToken(string email)
     {
         var secretKey = Encoding.UTF8.GetBytes(jwtSettings.Value.SecretKey);

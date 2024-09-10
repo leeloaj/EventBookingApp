@@ -4,12 +4,16 @@ using Services.Interfaces;
 
 namespace WebApi.Controllers;
 
+/// <summary>
+/// Controller for log in admin
+/// </summary>
+/// <param name="usersService"></param>
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController(IUsersService usersService) : Controller
 {
     /// <summary>
-    /// Admin log in
+    /// Post request to log in admin
     /// </summary>
     /// <param name="loginRequest">Login request</param>
     /// <returns>Token and email</returns>

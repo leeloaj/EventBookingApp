@@ -6,8 +6,16 @@ using Services.Interfaces;
 
 namespace Services;
 
+/// <summary>
+/// Service for creating and register to an event
+/// </summary>
+/// <param name="context"></param>
 public class EventsService(DataContext context) : IEventsService
 {
+    /// <summary>
+    /// Creating event
+    /// </summary>
+    /// <param name="eventDto"></param>
     public async Task CreateEvent(CreateEventDto eventDto)
     {
         var newEvent = new Event
@@ -21,6 +29,11 @@ public class EventsService(DataContext context) : IEventsService
         await context.SaveChangesAsync();
     }
 
+    /// <summary>
+    /// Register to event
+    /// </summary>
+    /// <param name="createRegisterDto"></param>
+    /// <exception cref="ArgumentException"></exception>
     public async Task Register(CreateRegisterDto createRegisterDto)
     {
         var dbEvent = await context.Events
@@ -56,6 +69,10 @@ public class EventsService(DataContext context) : IEventsService
         await context.SaveChangesAsync();
     }
 
+    /// <summary>
+    /// Get all created events
+    /// </summary>
+    /// <returns></returns>
     public async Task<List<EventDto>> GetAllEvents()
     {
         var events = await context.Events

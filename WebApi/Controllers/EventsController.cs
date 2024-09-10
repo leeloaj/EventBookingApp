@@ -5,10 +5,18 @@ using Services.Interfaces;
 
 namespace WebApi.Controllers;
 
+/// <summary>
+/// Controller for getting and creating events
+/// </summary>
+/// <param name="eventsService"></param>
 [ApiController]
 [Route("api/[controller]")]
 public class EventsController(IEventsService eventsService) : Controller
 {
+    /// <summary>
+    /// Get request to get all created events
+    /// </summary>
+    /// <returns>all created events</returns>
     [HttpGet]
     [Produces("application/json")]
     [ProducesResponseType(typeof(List<EventDto>), StatusCodes.Status200OK)]
@@ -19,6 +27,11 @@ public class EventsController(IEventsService eventsService) : Controller
         return Ok(events);
     }
 
+    /// <summary>
+    /// Post request to create event
+    /// </summary>
+    /// <param name="eventDto"></param>
+    /// <returns></returns>
     [HttpPost("create")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -30,6 +43,11 @@ public class EventsController(IEventsService eventsService) : Controller
         return NoContent();
     }
 
+    /// <summary>
+    /// Post request to register to event
+    /// </summary>
+    /// <param name="createRegisterDto"></param>
+    /// <returns></returns>
     [HttpPost("register")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
