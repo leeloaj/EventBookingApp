@@ -1,7 +1,6 @@
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import CreateEventDto from "../types/CreateEventDto";
 import { createEvent } from "../apiRequests/apiRequests";
-import "react-datepicker/dist/react-datepicker.css";
 import { Context } from "../App";
 import { useNavigate } from "react-router";
 
