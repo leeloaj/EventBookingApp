@@ -28,7 +28,10 @@ function Navbar() {
             >
               Logi välja
             </button>
-            <Link to="/createEvent" className="navbar-brand">
+            <Link
+              to="/createEvent"
+              className="btn btn-sm btn-outline-secondary"
+            >
               Loo Üritus
             </Link>
           </>

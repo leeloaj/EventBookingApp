@@ -86,7 +86,7 @@ function CreateEventForm() {
       <div className="form-group mt-2">
         <label htmlFor="maxParticipants">Maksimaalne osalejate arv</label>
         <input
-          type="text"
+          type="number"
           className="form-control"
           id="maxPparticipants"
           name="maxParticipants"

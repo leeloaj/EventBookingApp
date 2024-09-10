@@ -35,12 +35,14 @@ function ListGroup() {
                   <div className="mr-2">
                     {event.registrations.length}/{event.maxParticipants}
                   </div>
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => handleButtonClick(event)}
-                  >
-                    Registreeri
-                  </button>
+                  {event.registrations.length !== event.maxParticipants && (
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => handleButtonClick(event)}
+                    >
+                      Registreeri
+                    </button>
+                  )}
                 </div>
               </li>
               {event.showForm && <RegistrationForm eventId={event.id} />}
